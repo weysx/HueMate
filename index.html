@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HueMate - 专业的配色推荐平台</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>HueMate</h1>
+        <p>发现完美的配色方案</p>
+    </header>
+    
+    <main>
+        <div class="container">
+            <!-- 左侧配色组列表 -->
+            <section class="color-palettes">
+                <h2>配色方案</h2>
+                <div class="palette-list" id="paletteList">
+                    <!-- 配色组将通过JavaScript动态生成 -->
+                </div>
+            </section>
+
+            <!-- 右侧预览区域 -->
+            <section class="preview-section">
+                <h2>预览效果</h2>
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-header">
+                        <h3>示例页面</h3>
+                    </div>
+                    <div class="preview-content">
+                        <div class="color-info">
+                            <h4>颜色代码</h4>
+                            <div id="colorCodes"></div>
+                        </div>
+                        <div class="color-analysis">
+                            <h4>配色分析</h4>
+                            <p id="colorAnalysis"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 HueMate. 所有权利保留。</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
