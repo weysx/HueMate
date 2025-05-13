@@ -107,66 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (colorPalettes.length > 0) {
         showPalettePreview(colorPalettes[0], 0);
     }
-
-    // 添加新配色功能
-    const addPaletteBtn = document.getElementById('addPaletteBtn');
-    const colorInputs = document.getElementById('colorInputs');
-    const savePaletteBtn = document.getElementById('savePaletteBtn');
-    const cancelPaletteBtn = document.getElementById('cancelPaletteBtn');
-    const colorPickers = document.querySelectorAll('.color-picker');
-    const colorCodeInputs = document.querySelectorAll('.color-code-input');
-
-    // 显示颜色输入区域
-    addPaletteBtn.addEventListener('click', () => {
-        colorInputs.style.display = 'block';
-        addPaletteBtn.style.display = 'none';
-    });
-
-    // 取消添加
-    cancelPaletteBtn.addEventListener('click', () => {
-        colorInputs.style.display = 'none';
-        addPaletteBtn.style.display = 'block';
-        colorPickers.forEach(picker => picker.value = '#000000');
-        colorCodeInputs.forEach(input => input.value = '');
-    });
-
-    // 同步颜色选择器和输入框
-    colorPickers.forEach((picker, index) => {
-        picker.addEventListener('input', () => {
-            colorCodeInputs[index].value = picker.value.toUpperCase();
-        });
-    });
-
-    colorCodeInputs.forEach((input, index) => {
-        input.addEventListener('input', () => {
-            const color = input.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                colorPickers[index].value = color;
-            }
-        });
-    });
-
-    // 保存新配色方案
-    savePaletteBtn.addEventListener('click', () => {
-        const colors = Array.from(colorPickers).map(picker => picker.value);
-        const newPalette = {
-            colors: colors,
-            name: '自定义配色',
-            analysis: '这是一个自定义的配色方案。'
-        };
-
-        colorPalettes.push(newPalette);
-        const index = colorPalettes.length - 1;
-
-        const paletteElement = createPaletteElement(newPalette, index);
-        paletteList.appendChild(paletteElement);
-        showPalettePreview(newPalette, index);
-
-        colorInputs.style.display = 'none';
-        addPaletteBtn.style.display = 'block';
-        colorPickers.forEach(picker => picker.value = '#000000');
-        colorCodeInputs.forEach(input => input.value = '');
-    });
 });
 
 // 创建配色方案元素
