@@ -43,7 +43,7 @@ header h1 {
 
 .palette-list {
     display: grid;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .color-palette {
@@ -92,7 +92,6 @@ header h1 {
 
 .preview-header {
     padding: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .preview-top  {
@@ -101,7 +100,9 @@ header h1 {
 }
 
 .preview-content {
-    padding: 1.5rem;
+    margin: 0;
+    padding-left: 1.5rem;
+    padding-right: 300px;
 }
 
 /* 下部分样式 */
@@ -139,13 +140,6 @@ header h1 {
     margin-right: 1rem;
 }
 
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: #fff;
-    margin-top: 2rem;
-}
-
 /* 响应式设计 */
 @media (max-width: 768px) {
     .container {
@@ -157,104 +151,3 @@ footer {
         max-height: none;
     }
 }
-
-/* 组件展示区样式 */
-.components-showcase {
-    display: grid;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* 卡片组件 */
-.showcase-card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-    padding: 1rem;
-    background: var(--card-header-bg);
-    color: var(--card-header-text);
-    font-weight: bold;
-}
-
-.card-content {
-    padding: 1.5rem;
-    color: var(--card-text);
-}
-
-.card-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    background: var(--button-bg);
-    color: var(--button-text);
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.card-button:hover {
-    opacity: 0.9;
-}
-
-/* 导航栏组件 */
-.showcase-nav {
-    display: flex;
-    background: var(--nav-bg);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.nav-item {
-    padding: 1rem 1.5rem;
-    color: var(--nav-text);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.nav-item:hover {
-    background: var(--nav-hover);
-}
-
-.nav-item.active {
-    background: var(--nav-active);
-    color: var(--nav-active-text);
-}
-
-/* 标签组件 */
-.showcase-tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.tag {
-    padding: 0.5rem 1rem;
-    background: var(--tag-bg);
-    color: var(--tag-text);
-    border-radius: 20px;
-    font-size: 0.9rem;
-}
-
-/* 进度条组件 */
-.showcase-progress {
-    padding: 1rem;
-}
-
-.progress-bar {
-    height: 8px;
-    background: var(--progress-bg);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    width: 75%;
-    height: 100%;
-    background: var(--progress-fill);
-    border-radius: 4px;
-    transition: width 0.3s;
-} 
