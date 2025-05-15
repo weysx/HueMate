@@ -1,12 +1,18 @@
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
 }
 
 body {
     font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    line-height: 1.6;
     background-color: #f5f5f5;
 }
 
@@ -20,14 +26,6 @@ header {
 header h1 {
     color: #333;
     margin-bottom: 0.3rem;
-}
-
-.container {
-    display: flex;
-    max-width: 1400px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    gap: 2rem;
 }
 
 /* 左侧配色组样式 */
@@ -46,6 +44,7 @@ header h1 {
     gap: 2rem;
 }
 
+/* 单个配色组 */
 .color-palette {
     display: flex;
     height: 60px;
@@ -54,11 +53,11 @@ header h1 {
     cursor: pointer;
     transition: transform 0.2s;
 }
-
+/* 悬停悬浮 */
 .color-palette:hover {
     transform: translateY(-2px);
 }
-
+/* 等分 */
 .color-strip {
     flex: 1;
 }
@@ -72,7 +71,7 @@ header h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-height: 80vh;
     overflow-y: auto;
-}
+}   
 
 .preview-container {
     margin-top: 1rem;
@@ -83,37 +82,19 @@ header h1 {
     flex-direction: column;
 }
 
-/* 上部分样式 */
-.preview-top {
-    flex: 1;
-    background: var(--top-bg);
-    color: var(--top-text);
-}
-
 .preview-header {
     padding: 1.5rem;
 }
 
-.preview-top  {
+.preview-main  {
     font-size: 16px;
     padding: 1.5rem;
-}
+}  
 
-.preview-content {
+.preview-header2 {
     margin: 0;
     padding-left: 1.5rem;
     padding-right: 300px;
-}
-
-/* 下部分样式 */
-.preview-bottom {
-    background: #ffffff;
-    padding: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.preview-bottom .preview-content {
-    color: #333;
 }
 
 /* 颜色信息和分析 */
