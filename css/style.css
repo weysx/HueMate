@@ -76,7 +76,6 @@ header h1 {
 .preview-container {
     margin-top: 1rem;
     min-height: calc(100vh - 200px);
-    border-radius: 8px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -89,6 +88,7 @@ header h1 {
 .preview-main  {
     font-size: 16px;
     padding: 1.5rem;
+    border-radius: 8px;
 }  
 
 .preview-header2 {
