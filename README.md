@@ -6,19 +6,19 @@ HueMate 是一个直观易用的配色方案推荐平台，帮助设计师和开
 
 ```
 huemate/
-├── node_modules/         # Node.js 依赖包
-├── package-lock.json     # 包依赖锁定文件
-├── package.json          # 项目配置文件
-├── public/               # 存放所有前端静态资源 (public 目录内文件)
+├── node_modules/         
+├── package-lock.json     
+├── package.json          
+├── public/               # 存放所有前端静态资源
 │   ├── css/
-│   │   └── style.css     # 样式文件
+│   │   └── style.css     
 │   ├── js/
-│   │   └── script.js     # 前端交互逻辑
-│   └── index.html        # 网站主页
+│   │   └── script.js     
+│   └── index.html        
 ├── src/                  # 存放后端源代码
 │   ├── models/
-│   │   └── rating.js     # MongoDB Mongoose 模型定义
-│   └── server.js         # 后端 Express 服务器入口文件
+│   │   └── rating.js     
+│   └── server.js         
 └── README.md             # 项目说明文档    
 ```
 
