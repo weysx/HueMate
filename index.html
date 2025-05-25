@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HueMate - 专业的配色推荐平台</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header>
@@ -43,6 +44,20 @@
                             <div class="color-analysis">
                                 <h4 style="margin-bottom: 1.5rem;">配色分析</h4>
                                 <p id="colorAnalysis"></p>
+                            </div>
+                            <!-- 评星组件 -->
+                            <div class="rating-section">
+                                <div class="stars-container">
+                                    <div class="stars" id="stars">
+                                        <i class="far fa-star" data-rating="1"></i>
+                                        <i class="far fa-star" data-rating="2"></i>
+                                        <i class="far fa-star" data-rating="3"></i>
+                                        <i class="far fa-star" data-rating="4"></i>
+                                        <i class="far fa-star" data-rating="5"></i>
+                                    </div>
+                                    <div class="average-rating" id="averageRating"></div>
+                                </div>
+                                <button id="submitRating" class="submit-rating">提交评分</button>
                             </div>
                         </div>
                     </div>

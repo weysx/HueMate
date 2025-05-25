@@ -65,6 +65,97 @@ const colorPalettes = [
     },
 ];
 
+// 评星功能
+let currentRating = 0;
+let currentPaletteId = null;
+
+function initializeRatingSystem() {
+    const stars = document.querySelectorAll('.stars i');
+    const submitButton = document.getElementById('submitRating');
+
+    //为每个星星添加事件监听
+    stars.forEach(star => {
+        // 鼠标悬停时预览评分
+        star.addEventListener('mouseover', () => {
+            const rating = parseInt(star.dataset.rating);
+            updateStars(rating);
+        });
+        // 鼠标移出时恢复当前评分  
+        star.addEventListener('mouseout', () => {
+            updateStars(currentRating);
+        });
+        // 点击时设置评分
+        star.addEventListener('click', () => {
+            currentRating = parseInt(star.dataset.rating);
+            updateStars(currentRating);
+        });
+    });
+    // 提交评分
+    submitButton.addEventListener('click', submitRating);
+}
+
+function updateStars(rating) {
+    const stars = document.querySelectorAll('.stars i');
+    stars.forEach(star => {
+        const starRating = parseInt(star.dataset.rating);
+        if (starRating <= rating) {
+            star.classList.remove('far');
+            star.classList.add('fas');
+            star.classList.add('active');
+        } else {
+            star.classList.remove('fas');
+            star.classList.add('far');
+            star.classList.remove('active');
+        }
+    });
+}
+
+async function submitRating() {
+    // 发送POST请求到后端
+    try {
+        // 在这里添加 console.log
+        console.log('提交的 paletteId:', currentPaletteId, '评分:', currentRating);
+
+        const response = await fetch('http://localhost:3000/api/ratings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                paletteId: currentPaletteId,
+                rating: currentRating
+            })
+        });
+
+        if (response.ok) {
+            alert('评分提交成功！');
+            loadAverageRating(currentPaletteId);
+        } else {
+            throw new Error('评分提交失败');
+        }
+    } catch (error) {
+        alert('评分提交失败：' + error.message);
+    }
+}
+
+async function loadAverageRating(paletteId) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/ratings/${paletteId}`);
+        const data = await response.json();
+        const averageRatingElement = document.getElementById('averageRating');
+        averageRatingElement.textContent = `平均评分：${data.averageRating.toFixed(1)}`;
+    } catch (error) {
+        console.error('加载平均评分失败：', error);
+    }
+}
+
+// 修改现有的配色方案选择处理函数
+function handlePaletteSelection(palette) {
+    currentPaletteId = palette.id;
+    // ... 现有的配色方案处理代码 ...
+    loadAverageRating(palette.id);
+}
+
 // 初始化页面
 document.addEventListener('DOMContentLoaded', () => {
     const paletteList = document.getElementById('paletteList');
@@ -79,6 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (colorPalettes.length > 0) {
         showPalettePreview(colorPalettes[0], 0);
     }
+
+    initializeRatingSystem();
 });
 
 // 创建配色方案元素
@@ -114,8 +207,20 @@ function updatePreviewStyles(colors, colorRules) {
 
 // 显示配色方案预览
 function showPalettePreview(palette, index) {
+    currentPaletteId = String(index);
+
+    const averageRatingElement = document.getElementById('averageRating'); // 获取平均评分元素
+    averageRatingElement.textContent = '平均评分：暂无'; // 切换时显示“暂无”或清空
+
+    currentRating = 0; // 重置当前选择的星级
+    updateStars(currentRating); // 更新星级显示，全部清空
+
     const colorCodes = document.getElementById('colorCodes');
     const colorAnalysis = document.getElementById('colorAnalysis');
+
+    // 设置CSS变量
+    document.documentElement.style.setProperty('--accent-color', palette.colors[2]); // 使用第三个颜色（高亮色）
+    document.documentElement.style.setProperty('--accent-hover-color', palette.colors[2]); // 使用相同的颜色，hover时通过opacity改变
 
     colorCodes.innerHTML = '';
     
@@ -153,4 +258,7 @@ function showPalettePreview(palette, index) {
 
     // 更新预览区域的样式，传入颜色规则
     updatePreviewStyles(palette.colors, palette.colorRules);
+
+    // 最后加载平均评分，它会在加载完成后更新 averageRatingElement
+    loadAverageRating(currentPaletteId); 
 }

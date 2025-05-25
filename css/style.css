@@ -132,3 +132,62 @@ header h1 {
         max-height: none;
     }
 }
+
+.rating-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+}
+
+.stars-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.stars {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    width: fit-content;
+}
+
+.stars i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s ease;    
+}
+
+.stars i:hover,
+.stars i.active {
+    color: var(--accent-color);
+}
+
+.average-rating {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.submit-rating {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: block;
+    width: fit-content;
+    min-width: 100px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.submit-rating:hover {
+    opacity: 0.9;
+}
