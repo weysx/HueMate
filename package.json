@@ -1,0 +1,14 @@
+{
+  "name": "huemate",
+  "version": "1.0.0",
+  "description": "专业的配色推荐平台",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongoose": "^6.13.8"
+  }
+}
